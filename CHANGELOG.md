@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.3.79] -- 2022-04-25
+### Fixed
+- Fixed Gradle building Issues.
+- Fixed YouTube detail parse bug.
+- Fixed searching in YouTube Music.
+- Fixed age restricted Videos.
+- Fixed SoundCloud loading Issues.
+- Fixed IPRouteRotation Issue.
+- Fixed YouTube 403.
+
 ## [1.3.78] -- 2021-06-28
 ### Fixed
 - Fixed loading YouTube tracks with age verification.
