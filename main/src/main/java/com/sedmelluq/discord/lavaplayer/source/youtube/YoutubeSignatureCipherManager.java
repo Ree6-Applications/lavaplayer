@@ -149,6 +149,10 @@ public class YoutubeSignatureCipherManager implements YoutubeSignatureResolver {
     return cipherKey;
   }
 
+  public void clearCache(String cipherScriptUrl) {
+    cipherCache.remove(cipherScriptUrl);
+  }
+
   private void validateResponseCode(String cipherScriptUrl, CloseableHttpResponse response) throws IOException {
     int statusCode = response.getStatusLine().getStatusCode();
 
