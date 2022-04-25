@@ -6,21 +6,21 @@ LavaPlayer is an audio player library written in Java which can load audio track
 
 #### Maven package
 
-Replace `x.y.z` with the latest version number: 1.3.77 
+Replace `x.y.z` with the latest version number: 1.3.78 
 
-* Repository: https://m2.dv8tion.net/releases
-* Artifact: **com.sedmelluq:lavaplayer:x.y.z**
+* Repository: https://jitpack.io
+* Artifact: **com.github.Ree6-Applications:lavaplayer:x.y.z**
 
 Using in Gradle:
 ```gradle
 repositories {
   maven {
-    url 'https://m2.dv8tion.net/releases'
+    url 'https://jitpack.io'
   }
 }
 
 dependencies {
-  implementation 'com.sedmelluq:lavaplayer:x.y.z'
+  implementation 'com.github.Ree6-Applications:lavaplayer:x.y.z'
 }
 ```
 
@@ -28,15 +28,14 @@ Using in Maven:
 ```xml
 <repositories>
   <repository>
-    <id>dv8tion</id>
-    <name>m2-dv8tion</name>
-    <url>https://m2.dv8tion.net/releases</url>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
   </repository>
 </repositories>
 
 <dependencies>
   <dependency>
-    <groupId>com.sedmelluq</groupId>
+    <groupId>com.github.Ree6-Applications</groupId>
     <artifactId>lavaplayer</artifactId>
     <version>x.y.z</version>
   </dependency>
