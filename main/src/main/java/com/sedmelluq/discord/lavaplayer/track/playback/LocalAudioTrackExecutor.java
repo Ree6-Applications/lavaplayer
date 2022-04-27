@@ -5,6 +5,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioConfiguration;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerOptions;
 import com.sedmelluq.discord.lavaplayer.source.youtube.DefaultYoutubeTrackDetailsLoader;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
+import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSignatureCipher;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSignatureCipherManager;
 import com.sedmelluq.discord.lavaplayer.tools.ExceptionTools;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
@@ -122,23 +123,27 @@ public class LocalAudioTrackExecutor implements AudioTrackExecutor {
       if (e.getMessage().contains("Not success status code: 403")
               && (lastRetry == -1 || lastRetry + RETRY_COOLDOWN <= System.currentTimeMillis())
               && audioTrack.getSourceManager() instanceof YoutubeAudioSourceManager) {
-        lastRetry = System.currentTimeMillis();
-
-        log.debug("Detected 403, clearing cipher cache and retrying.");
 
         YoutubeAudioSourceManager sourceManager = (YoutubeAudioSourceManager) audioTrack.getSourceManager();
-        DefaultYoutubeTrackDetailsLoader trackDetailsLoader = (DefaultYoutubeTrackDetailsLoader) sourceManager.getTrackDetailsLoader();
-        DefaultYoutubeTrackDetailsLoader.CachedPlayerScript cachedScript = trackDetailsLoader.getCachedPlayerScript();
+        if (sourceManager.getTrackDetailsLoader() instanceof DefaultYoutubeTrackDetailsLoader) {
+          log.debug("Detected 403, clearing cipher cache and retrying.");
+          lastRetry = System.currentTimeMillis();
 
-        // Clear cached scripts and ciphers.
-        if (cachedScript != null) {
-          ((YoutubeSignatureCipherManager) sourceManager.getSignatureResolver()).clearCache(cachedScript.getPlayerScriptUrl());
-          trackDetailsLoader.clearCache();
+          DefaultYoutubeTrackDetailsLoader trackDetailsLoader = (DefaultYoutubeTrackDetailsLoader) sourceManager.getTrackDetailsLoader();
+          DefaultYoutubeTrackDetailsLoader.CachedPlayerScript cachedScript = trackDetailsLoader.getCachedPlayerScript();
+
+          // Clear cached scripts and ciphers.
+          if (cachedScript != null) {
+            if (sourceManager.getSignatureResolver() instanceof YoutubeSignatureCipher) {
+              ((YoutubeSignatureCipherManager) sourceManager.getSignatureResolver()).clearCache(cachedScript.getPlayerScriptUrl());
+              trackDetailsLoader.clearCache();
+            }
+          }
+
+          // Attempt to process again.
+          attemptProcess(listener);
+          return;
         }
-
-        // Attempt to process again.
-        attemptProcess(listener);
-        return;
       }
 
       // Temporarily clear the interrupted status so it would not disrupt listener methods.

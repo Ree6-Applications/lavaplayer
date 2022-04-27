@@ -45,7 +45,20 @@ public class YoutubeMixProvider implements YoutubeMixLoader {
       HttpClientTools.assertSuccessWithContent(response, "mix response");
 
       JsonBrowser body = JsonBrowser.parse(response.getEntity().getContent());
-      JsonBrowser playlist = body.index(3).get("response")
+
+      /**
+       * Temporary workaround
+       * @author MichailiK
+       */
+      JsonBrowser playlist = body.get("response");
+      // In case it doesn't work
+      if(playlist.isNull()) {
+        playlist = body.index(3).get("response");
+      }
+
+      playlist = playlist.get("contents");
+
+      playlist = playlist
               .get("contents")
               .get("twoColumnWatchNextResults")
               .get("playlist")

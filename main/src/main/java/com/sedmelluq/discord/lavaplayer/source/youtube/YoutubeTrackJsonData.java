@@ -33,7 +33,27 @@ public class YoutubeTrackJsonData {
           playerInfo = result.get("player");
           playerResponse = result.get("playerResponse");
       }
-      
+
+      /**
+       * Temporary workaround
+       * @author MichailiK
+       */
+      playerResponse = result.get("playerResponse");
+      // In case temporary workaround doesn't work
+      if(playerResponse.isNull()) {
+        for (JsonBrowser child : result.values()) {
+          if (child.isMap()) {
+            if (playerInfo.isNull()) {
+              playerInfo = child.get("player");
+            }
+
+            if (playerResponse.isNull()) {
+              playerResponse = child.get("playerResponse");
+            }
+          }
+        }
+      }
+
       for (JsonBrowser child : result.values()) {
         if (child.isMap()) {
           if (playerInfo.isNull()) {

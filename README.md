@@ -6,7 +6,7 @@ LavaPlayer is an audio player library written in Java which can load audio track
 
 #### Maven package
 
-Replace `x.y.z` with the latest version number: 1.3.79 
+Replace `x.y.z` with the latest version number: 1.3.80 
 
 * Repository: https://jitpack.io
 * Artifact: **com.github.Ree6-Applications:lavaplayer:x.y.z**
@@ -42,6 +42,15 @@ Using in Maven:
 </dependencies>
 ```
 
+## Fork Information
+This fork is a collection of PRs to the original Project, or code from other forks that fix Issues.
+Credits:
+- https://github.com/MichailiK/lavaplayer
+- https://github.com/forkiesassds/lavaplayer
+- https://github.com/idpromnut/lavaplayer/tree/youtube_details_parse_bug
+- https://github.com/Walkyst/lavaplayer
+- https://github.com/Walkyst/lavaplayer/tree/fix-age-restricted-videos
+- https://github.com/kikkia/lavaplayer/tree/fix-block-indexing
 
 ## Supported formats
 
