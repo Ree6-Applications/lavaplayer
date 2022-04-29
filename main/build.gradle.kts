@@ -8,7 +8,7 @@ val moduleName = "lavaplayer"
 version = "1.3.80"
 
 dependencies {
-  api("com.sedmelluq:lava-common:1.1.2")
+  api("com.github.Ree6-Applications.lavaplayer:lava-common:1.3.80")
   implementation("com.sedmelluq:lavaplayer-natives:1.3.14")
   implementation("org.slf4j:slf4j-api:1.7.36")
 
@@ -24,7 +24,7 @@ dependencies {
   testImplementation("org.codehaus.groovy:groovy:3.0.10")
   testImplementation("org.spockframework:spock-core:2.1-groovy-3.0")
   testImplementation("ch.qos.logback:logback-classic:1.2.11")
-  testImplementation("com.sedmelluq:lavaplayer-test-samples:1.3.11")
+  testImplementation("com.github.Ree6-Applications.lavaplayer:lavaplayer-test-samples:1.3.80")
 }
 
 tasks.jar {
