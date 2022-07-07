@@ -5,7 +5,7 @@ plugins {
 }
 
 val moduleName = "lavaplayer"
-version = "1.3.80"
+version = "1.3.81"
 
 dependencies {
   api("com.github.Ree6-Applications.lavaplayer:lava-common:1.3.80")

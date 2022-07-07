@@ -68,12 +68,22 @@ public class DefaultYoutubeTrackDetails implements YoutubeTrackDetails {
       }
     }
 
+    JsonBrowser jsonBrowser = data.playerResponse;
+
     log.warn(
-        "Video {} with no detected format field, response {} polymer {}",
-        videoId,
-        data.playerResponse.format(),
-        data.polymerArguments.format()
+            "Video {} with no detected format field, response {} polymer {}",
+            videoId,
+            jsonBrowser.format(),
+            data.polymerArguments.format()
     );
+
+    if (!jsonBrowser.get("playabilityStatus").isNull()) {
+      JsonBrowser playabilityStatus = jsonBrowser.get("playabilityStatus");
+      String status = playabilityStatus.get("status").text(),
+              reason = playabilityStatus.get("reason").text();
+      throw new FriendlyException("Unable to play this YouTube track.", COMMON,
+              new IllegalAccessError(status + " - " + reason));
+    }
 
     throw new FriendlyException("Unable to play this YouTube track.", SUSPICIOUS,
         new IllegalStateException("No track formats found."));

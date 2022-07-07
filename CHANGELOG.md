@@ -1,10 +1,14 @@
 # Change Log
 
-## [1.3.80] -- 2022-04-27
-### Fixed
+## [1.3.81] -- 2022-07-07
+### Added
 - Fixed YouTube Playlist loading.
 - Fixed YouTube Mix-Playlist loading.
 - Fixed ClassCastException.
+
+## [1.3.80] -- 2022-04-27
+### Fixed
+- an Exception when ever the Video is not accessible.
 
 ## [1.3.79] -- 2022-04-25
 ### Fixed
