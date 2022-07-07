@@ -5,10 +5,10 @@ plugins {
 }
 
 val moduleName = "lavaplayer"
-version = "1.3.81"
+version = "1.3.82"
 
 dependencies {
-  api("com.github.Ree6-Applications.lavaplayer:lava-common:1.3.80")
+  api("com.github.Ree6-Applications.lavaplayer:lava-common:1.3.82")
   implementation("com.sedmelluq:lavaplayer-natives:1.3.14")
   implementation("org.slf4j:slf4j-api:1.7.36")
 
@@ -24,7 +24,7 @@ dependencies {
   testImplementation("org.codehaus.groovy:groovy:3.0.10")
   testImplementation("org.spockframework:spock-core:2.1-groovy-3.0")
   testImplementation("ch.qos.logback:logback-classic:1.2.11")
-  testImplementation("com.github.Ree6-Applications.lavaplayer:lavaplayer-test-samples:1.3.80")
+  testImplementation("com.github.Ree6-Applications.lavaplayer:lavaplayer-test-samples:1.3.82")
 }
 
 tasks.jar {
