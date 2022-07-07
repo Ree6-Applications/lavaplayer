@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.3.83] -- 2022-07-07
+### Fixed
+- Fixed Gradle.
+
 ## [1.3.82] -- 2022-07-07
 ### Fixed
 - Fixed Gradle.
