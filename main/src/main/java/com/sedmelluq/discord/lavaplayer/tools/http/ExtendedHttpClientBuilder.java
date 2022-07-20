@@ -131,7 +131,7 @@ public class ExtendedHttpClientBuilder extends HttpClientBuilder {
           .addFromResourceDirectory("/certificates")
           .build();
 
-      SSLContext context = SSLContext.getInstance("TLS");
+      SSLContext context = SSLContext.getInstance("TLSv1.2");
       context.init(null, new X509TrustManager[] { trustManager }, null);
       return context;
     } catch (Exception e) {
