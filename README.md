@@ -1,5 +1,7 @@
 # LavaPlayer - Audio player library for Discord
 
+# ⚠️Maintanence drop⚠️<br> Please use this [fork](https://github.com/Walkyst/lavaplayer-fork) instead!
+
 LavaPlayer is an audio player library written in Java which can load audio tracks from various sources and convert them into a stream of Opus frames. It is designed for use with Discord bots, but it can be used anywhere where Opus format output is required.
 
 **Please read the [FAQ](FAQ.md) in case of issues.**
